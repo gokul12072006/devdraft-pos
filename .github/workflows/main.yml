@@ -5,6 +5,9 @@ on:
     branches: [ main, master ]
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build:
     runs-on: windows-2022
@@ -13,22 +16,33 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 18
+      - name: Setup Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '22'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Clean install dependencies
+        run: |
+          Remove-Item -Recurse -Force node_modules -ErrorAction SilentlyContinue
+          Remove-Item -Force package-lock.json -ErrorAction SilentlyContinue
+          npm install --legacy-peer-deps
+
+      - name: Install NSIS
+        run: choco install nsis -y
 
       - name: Build Windows NSIS Setup
-        run: npx electron-builder@25.1.8 --win nsis --x64
+        run: npx electron-builder --win nsis --x64
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEBUG: electron-builder
+
+      - name: List dist folder
+        run: dir dist
 
       - name: Upload Setup.exe
         uses: actions/upload-artifact@v4
         with:
           name: Dev-Draft-POS-Setup
           path: "dist/Dev Draft POS Setup.exe"
+          if-no-files-found: warn
           retention-days: 30
