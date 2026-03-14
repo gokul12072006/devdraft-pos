@@ -1,0 +1,27 @@
+DEV DRAFT POS — END USER LICENSE AGREEMENT
+==========================================
+
+Copyright (c) 2025 Dev Draft. All Rights Reserved.
+
+This software is licensed, not sold. By installing Dev Draft POS, you agree to the following terms:
+
+1. GRANT OF LICENSE
+   Dev Draft grants you a non-exclusive, non-transferable license to install and use this
+   software on devices owned or controlled by you, solely for your personal or business use.
+
+2. RESTRICTIONS
+   You may not: copy, modify, distribute, sell, or transfer the software or any part of it
+   to any third party without prior written consent from Dev Draft.
+
+3. DATA & PRIVACY
+   All billing data, inventory, and settings are stored locally on your computer only.
+   Dev Draft does not collect, transmit, or store any of your business data.
+
+4. DISCLAIMER
+   This software is provided "as is" without warranty of any kind. Dev Draft shall not be
+   liable for any damages arising from the use of this software.
+
+5. SUPPORT
+   For support, contact: support@devdraft.in
+
+By clicking "I Agree" during installation, you accept these terms.
